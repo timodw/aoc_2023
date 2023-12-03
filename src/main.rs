@@ -24,6 +24,12 @@ fn main() {
             println!("Part 1: {}", days::day_1::part_1(&contents));
             println!("Part 2: {}", days::day_1::part_2(&contents));
         },
+        2 => {
+            let input_file_path = "data/day_2_full.txt";
+            let contents = fs::read_to_string(input_file_path).unwrap();
+            println!("Part 1: {}", days::day_2::part_1(&contents));
+            println!("Part 2: {}", days::day_2::part_2(&contents))
+        }
         _ => eprintln!("Day not implemented!")
     };
 }
