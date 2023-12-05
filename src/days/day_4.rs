@@ -9,8 +9,6 @@ fn count_matches(line: &str) -> u64 {
     own_numbers.intersection(&winning_numbers).count() as u64
 }
 
-
-
 pub fn part_1(contents: &str) -> u64 {
      contents.split("\n").map( |card| {
         let line = card.split(": ").nth(1).unwrap();
