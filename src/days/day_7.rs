@@ -5,7 +5,6 @@ struct Hand {
     hand: Vec<u64>,
     hand_occurrences: Vec<u64>,
     bid_value: u64,
-    part_2: bool,
     joker_count: u64
 }
 
@@ -18,11 +17,11 @@ impl Hand {
             hand_occurrences[(*card - diff) as usize] += 1;
         }
         if part_2 { hand_occurrences[0] = 0; }
-        Hand { hand, hand_occurrences, bid_value, part_2, joker_count }
+        Hand { hand, hand_occurrences, bid_value, joker_count }
     }
 }
 
-fn get_hand_value(counts: &Vec<u64>, part_2: bool, joker_count: u64) -> u64 {
+fn get_hand_value(counts: &Vec<u64>, joker_count: u64) -> u64 {
     let mut sorted_counts = counts.clone();
     sorted_counts.sort_by(|a, b| b.cmp(a));
 
@@ -48,8 +47,8 @@ fn get_hand_value(counts: &Vec<u64>, part_2: bool, joker_count: u64) -> u64 {
 
 impl Ord for Hand {
     fn cmp(&self, other: &Self) -> Ordering {
-        let self_val = get_hand_value(&self.hand_occurrences, self.part_2, self.joker_count);
-        let other_val = get_hand_value(&other.hand_occurrences, self.part_2, other.joker_count);
+        let self_val = get_hand_value(&self.hand_occurrences, self.joker_count);
+        let other_val = get_hand_value(&other.hand_occurrences, other.joker_count);
 
         if self_val == other_val {
             for (h1, h2) in self.hand.iter().zip(other.hand.iter()) {

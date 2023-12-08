@@ -3,7 +3,7 @@ use std::fs;
 mod days;
 
 fn main() {
-    let day= 7u8;
+    let day= 8u8;
     let input_file_path = format!("data/day_{}_full.txt", day);
     let contents = fs::read_to_string(input_file_path).unwrap();
     println!("Running day {day}!");
@@ -35,6 +35,10 @@ fn main() {
         7 => {
             println!("Part 1: {}", days::day_7::part_1(&contents));
             println!("Part 2: {}", days::day_7::part_2(&contents));
+        },
+        8 => {
+            println!("Part 1: {}", days::day_8::part_1(&contents));
+            println!("Part 2: {}", days::day_8::part_2(&contents));
         }
         _ => eprintln!("Day not implemented!")
     };
